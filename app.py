@@ -13,5 +13,5 @@ print('4. Sair\n')
 
 opcao_escolhida = input('Escolha uma opção: ')
 
-print('Você escolheu a opção :', opcao_escolhida)
+print(f'Você escolheu a opção : {opcao_escolhida}')
 
