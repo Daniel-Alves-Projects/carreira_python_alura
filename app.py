@@ -1,6 +1,6 @@
 import os
 
-restaurantes = []
+restaurantes = ['Pizza', 'Sushi']
 
 def exibir_nome_do_programa():
     print("""
@@ -32,8 +32,18 @@ def cadastrar_restaurante():
     nome_do_restaurante = input('Nome do Restaurante: ')
     restaurantes.append(nome_do_restaurante)
     print(f'Restaurante {nome_do_restaurante} cadastrado com sucesso!\n')
-    input('Pressione uma tecla para voltar ao menu inicial...')
+    input('\nPressione uma tecla para voltar ao menu inicial...')
     main()  
+
+def listar_restaurantes():
+    os.system('clear')
+    print ('Listando Restaurantes')
+    for restaurante in restaurantes:
+        print(f'.{restaurante}')
+
+    input('\nPressione uma tecla para voltar ao menu inicial...')
+    main()
+
 
 def escolher_opcao():
     try:
@@ -43,7 +53,7 @@ def escolher_opcao():
             cadastrar_restaurante()
 
         elif opcao_escolhida == 2:
-            print('Listar Restaurantes')
+            listar_restaurantes()
 
         elif opcao_escolhida == 3:
             print('Ativar Restaurante')
