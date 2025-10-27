@@ -3,7 +3,7 @@ import os
 restaurantes = [{'nome':'Praça', 'categoria':'Japonesa', 'ativo':False},
                 {'nome':'Pizza Suprema', 'categoria':'Pizzaria', 'ativo':True},
                 {'nome':'Cantina', 'categoria':'Italiana', 'ativo':False}]
- 
+
 def exibir_nome_do_programa():
     print("""
 ░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
@@ -16,17 +16,20 @@ def exibir_nome_do_programa():
 def exibir_opcoes():
     print('1. Cadastrar Restaurante')
     print('2. Listar Restaurante')
-    print('3. Ativar Restaurante')
+    print('3. Alternar estado do Restaurante')
     print('4. Sair\n')
 
 def exibir_subtitulos(texto):
     os.system('clear')
+    linha = '*' * (len(texto))
+    print(linha)
     print(texto)
+    print(linha)
     print()
 
 def finalizar_app():
     exibir_subtitulos('Finalizando o app')
-    
+
 def voltar_ao_menu_principal():
     input('\nPressione uma tecla para voltar ao menu inicial...')
     main()
@@ -52,8 +55,8 @@ def listar_restaurantes():
     for restaurante in restaurantes:
         nome_restaurante = restaurante['nome']
         categoria = restaurante['categoria']
-        ativo = restaurante['ativo']
-        print(f'.{nome_restaurante} | {categoria} | {ativo}')
+        ativo = 'ativado' if restaurante['ativo'] else 'desativado'
+        print(f'.{nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}')
 
     voltar_ao_menu_principal()
 
@@ -61,6 +64,8 @@ def alternar_estado_do_restaurante():
     exibir_subtitulos('Alteranar estado do restaurante')
     nome_restaurante = input('Digite o nome do restaurante que deseja alterar estado: ')
     restaurante_escontrado = False
+
+    print(f'{"Nome do restaurante".ljust(22)} | {"Categoria".ljust(20)} | Status')
 
     for restaurante in restaurantes:
         if nome_restaurante == restaurante['nome']:
